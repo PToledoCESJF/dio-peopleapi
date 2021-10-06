@@ -1,5 +1,6 @@
 package com.digitalInovationOne.personapi.entity;
 
+import com.digitalInovationOne.personapi.dto.request.PersonDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Entity
@@ -33,4 +35,11 @@ public class Person {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<Phone> phones;
+
+    public Person(PersonDTO personDTO){
+        this.setFirstName(personDTO.getFirstName());
+        this.setLastName(personDTO.getLastName());
+        this.setCpf(personDTO.getCpf());
+        this.setBirthDate(LocalDate.parse(personDTO.getBirthDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+    }
 }
