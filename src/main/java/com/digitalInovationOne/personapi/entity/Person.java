@@ -1,6 +1,7 @@
 package com.digitalInovationOne.personapi.entity;
 
 import com.digitalInovationOne.personapi.dto.request.PersonDTO;
+import com.digitalInovationOne.personapi.dto.request.PhoneDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -41,5 +43,6 @@ public class Person {
         this.setLastName(personDTO.getLastName());
         this.setCpf(personDTO.getCpf());
         this.setBirthDate(LocalDate.parse(personDTO.getBirthDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        this.setPhones(personDTO.getPhones().stream().map(obj -> new Phone(obj)).collect(Collectors.toList()));
     }
 }
