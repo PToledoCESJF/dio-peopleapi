@@ -7,7 +7,6 @@ import com.digitalInovationOne.personapi.exception.PersonNotFoundException;
 import com.digitalInovationOne.personapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,7 +27,6 @@ public class PersonService {
         return listDto;
     }
 
-    @PostMapping
     public MessageResponseDTO createPerson(PersonDTO personDTO){
         Person personToSave = new Person(personDTO);
         Person savedPerson = personRepository.save(personToSave);
@@ -39,8 +37,18 @@ public class PersonService {
     }
 
     public PersonDTO findById(Long id) throws PersonNotFoundException {
-        Person person = personRepository.findById(id)
-                .orElseThrow(() -> new PersonNotFoundException(id));
+        Person person = verifyIfExists(id);
         return new PersonDTO(person);
+    }
+
+    public void delete(Long id) throws PersonNotFoundException{
+        verifyIfExists(id);
+        personRepository.deleteById(id);
+    }
+
+
+    private Person verifyIfExists(Long id) throws PersonNotFoundException {
+        return personRepository.findById(id)
+                .orElseThrow(() -> new PersonNotFoundException(id));
     }
 }
