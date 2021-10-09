@@ -1,3 +1,6 @@
+[![JAVA](https://img.shields.io/badge/license-MIT-green)](https://github.com/PToledoCESJF/dio-peopleapi/blob/main/LICENSE)
+[![JAVA1](https://img.shields.io/github/last-commit/PToledoCESJF/dio-peopleapi)](https://github.com/PToledoCESJF/dio-peopleapi)
+
 ## Digital Innovation: Expert class - Desenvolvendo um sistema de gerenciamento de pessoas em API REST com Spring Boot
 
 Neste projeto live coding que faz parte do curso de Java com Spring Boot da **DIO** e ministrado por **Rodrigo Peleias**.
