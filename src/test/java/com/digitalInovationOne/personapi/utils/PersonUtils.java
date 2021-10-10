@@ -32,6 +32,7 @@ public class PersonUtils {
 
     public static PersonDTO createFakeDtoToSave() {
         return PersonDTO.builder()
+                .id(PERSON_ID)
                 .firstName(FIRST_NAME)
                 .lastName(LAST_NAME)
                 .cpf(CPF_NUMBER)

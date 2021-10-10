@@ -49,7 +49,7 @@ public class PersonService {
         return createMessageResponse(updatedPerson.getId(), "Person successfully updated with ID ");
     }
 
-    private MessageResponseDTO createMessageResponse(Long id, String message) {
+    public MessageResponseDTO createMessageResponse(Long id, String message) {
         return MessageResponseDTO
                 .builder()
                 .message(message + id)
