@@ -1,6 +1,5 @@
 package com.digitalInovationOne.personapi.entity;
 
-import com.digitalInovationOne.personapi.dto.request.PhoneDTO;
 import com.digitalInovationOne.personapi.enums.PhoneType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,11 +25,5 @@ public class Phone {
 
     @Column(nullable = false)
     private String number;
-
-    public Phone(PhoneDTO phoneDTO) {
-        this.setId(phoneDTO.getId());
-        this.setType((phoneDTO.getType() == null) ? null : phoneDTO.getType());
-        this.setNumber(phoneDTO.getNumber());
-    }
 
 }
